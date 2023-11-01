@@ -135,10 +135,17 @@
 <li><p>It offers an aesthetically pleasing terminal output to present repository-related data, facilitating the extraction of meaningful insights.</p>
 </li>
 </ul>
-<h3 id="Getting-Started"><a href="#Getting-Started" class="headerlink" title="Getting Started:"></a>Getting Started:</h3><ul>
-<li>Download the installer file<ul>
-<li>Windows: <a target="_blank" rel="noopener" href="https://github.com/gia-docs/gia_installer_files/blob/master/gia_installer_windows.ps1">gia_installer_windows.ps1</a></li>
-<li>Linux and MacOs: <a target="_blank" rel="noopener" href="https://github.com/gia-docs/gia_installer_files/blob/master/gia_installer_linux_or_Mac.sh">gia_installer_linux_or_Mac.sh</a></li>
+<h3 id="Prerequisite"><a href="#Prerequisite" class="headerlink" title="Prerequisite:"></a>Prerequisite:</h3><p>-Node JS version 18 and above..</p>
+<h3 id="Getting-Started-follow-the-steps-for-installtion"><a href="#Getting-Started-follow-the-steps-for-installtion" class="headerlink" title="Getting Started(follow the steps for installtion):"></a>Getting Started(follow the steps for installtion):</h3><ul>
+<li>Download the installer file. Users of the Marutitech organization only can download the installer files. (<a target="_blank" rel="noopener" href="https://drive.google.com/drive/folders/1AykB4ZPYr5z0Fh4M1SATp87B0H5tunQU">Alternative link for Download from Drive manually</a>).<ul>
+<li>Windows: <a target="_blank" rel="noopener" href="https://drive.google.com/uc?export=download&id=1B1yZweu_ihYcJVDZ_39r_MIVMxMEa3Ir">gia_installer_windows.ps1</a>.</li>
+<li>Linux and MacOs: <a target="_blank" rel="noopener" href="https://drive.google.com/uc?export=download&id=1U7oNbFtRK113OZzPEhCICHA9oFCOKx-J">gia_installer_linux_or_Mac.sh</a></li>
+</ul>
+</li>
+<li>Extract and Run the file.<ul>
+<li><strong>Windows</strong>: <strong>If you are using windows, run the command in the powershell.</strong> <code>Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass</code>. This will set the execution policy to bypass and run the unsigned files for that session of powershell only. It will be set to default once the powershell is closed. Run again after opening the powershell again at the time of running installation file. <strong>For Linux users, just run the installer file. No need to run extra command.</strong></li>
+<li><strong>Linux</strong>: If the Linux shellscript is not executable then please make it executable by <code>sudo chmod +x gia_installer_linux_or_Mac.sh</code> in linux terminal(one the path where the file is stored). If there is no privilages to you then try to run with the sudo command as <code>sudo file_name</code>.</li>
+<li><strong>MacOs</strong>: Run the command <code>sudo chmod +x gia_installer_linux_or_Mac.sh</code> to make the file executable. Run the installer file, if you are lack with the previlages then run the file with <strong>sudo</strong> command. Run <code>sudo file_name</code>.</li>
 </ul>
 </li>
 <li>Be sure to change the line endings (EOL) of the file respective to the operating system. For windows the line endings are CRLF. For Linux the line endings are LF.</li>
@@ -163,6 +170,12 @@
 <li>Verify the app is installed perfectly or not by running <code>gia</code> command.</li>
 <li>If it prints description of app then you are good to go. Ensure to run <code>gia configure</code> command first.</li>
 </ul>
+<h3 id="Update-App-to-get-latest-version"><a href="#Update-App-to-get-latest-version" class="headerlink" title="Update App to get latest version:"></a>Update App to get latest version:</h3><ul>
+<li>Run the following command in windows powershell or Linux terminal or MacOs Terminal.<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm update -g @Maruti-Techlabs/github-insight-cli-app</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="Uninstall-the-App"><a href="#Uninstall-the-App" class="headerlink" title="Uninstall the App:"></a>Uninstall the App:</h3><ul>
+<li>Run the following command in windows powershell or Linux terminal or MacOs Terminal.<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall -g @Maruti-Techlabs/github-insight-cli-app</span><br></pre></td></tr></table></figure></li>
+</ul>
 <h3 id="Commands"><a href="#Commands" class="headerlink" title="Commands:"></a>Commands:</h3><ol>
 <li><p><a href="#1-gia">gia</a></p>
 </li>
@@ -172,7 +185,7 @@
 </li>
 <li><p><a href="#4-gia-list-self-merged-prs">gia list-self-merged-prs</a></p>
 </li>
-<li><p><a href="#5-gia-delete-feature-release-branch">gia delete-feature-release-branch</a></p>
+<li><p><a href="#5-gia-delete-stale-branches">gia delete-stale-branches</a></p>
 </li>
 <li><p><a href="#6-gia-release-branches-prepare">gia release-branches-prepare</a></p>
 </li>
@@ -201,6 +214,10 @@
 <li><p>Username: This refers to the GitHub username, which is used to retrieve information associated with that username.</p>
 </li>
 <li><p>Access-Token: This is the access token provided to users, granting them access to their GitHub data.</p>
+<ul>
+<li>Don’t know how to generate the token? <a target="_blank" rel="noopener" href="https://docs.github.com/en/enterprise-server@3.6/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token">Find answer.</a></li>
+<li>Please keep the scope as repo. tick the checkbox <strong>repo</strong>.</li>
+</ul>
 </li>
 <li><p>Organization Name: This field is required to specify the organization to run the commands within a the organization on GitHub.</p>
 </li>
@@ -271,16 +288,16 @@
 <p>  <strong>Note: –organization&#x3D;&lt;orgval&gt; and –organization &lt;orgval&gt; can be used instead -o &lt;orgval&gt; and same for -r as well.</strong></p>
 </li>
 </ul>
-<h2 id="5-gia-delete-feature-release-branch"><a href="#5-gia-delete-feature-release-branch" class="headerlink" title="5. gia delete-feature-release-branch:"></a>5. gia delete-feature-release-branch:</h2><ul>
-<li><p>The command is designed to delete the feature-release branches from the repository. It will show all the feature-release branches that will be deleted by the command and will ask for the user permission for additional security and if the user have write access on the repository and will choose to go for deletion then the command will delete all the branches shown earlier.</p>
+<h2 id="5-gia-delete-stale-branches"><a href="#5-gia-delete-stale-branches" class="headerlink" title="5. gia delete-stale-branches:"></a>5. gia delete-stale-branches:</h2><ul>
+<li><p>The command is designed to delete the stale branches from the repository. It will show all the stale branches that will be deleted by the command and will ask for the user permission for additional security and if the user have write access on the repository and will choose to go for deletion then the command will delete all the branches shown earlier.</p>
 </li>
 <li><p>. The command is repo-spefic for -r &lt;repo-value&gt; and -o &lt;org-value&gt; -r &lt;repo-value&gt; options only.</p>
 </li>
 <li><p>Options:</p>
 <p>  <code>-o \&lt;value&gt;, --organization=&lt;value&gt;, –organization &lt;value&gt;</code></p>
-<p>  In value you have to specify the value of the organization in which you have to delete feature-release branches.</p>
+<p>  In value you have to specify the value of the organization in which you have to delete stale branches.</p>
 <p>  <code>-r \&lt;value&gt;, --repository=&lt;value&gt;, --repository &lt;value&gt;</code></p>
-<p>  In value you have to specify the value of the repository name in which you want to delete feature-release branches.</p>
+<p>  In value you have to specify the value of the repository name in which you want to delete stale branches.</p>
 <p>  <code>--filter &lt;value&gt;</code></p>
 <p>  To filter the repositories by &lt;value&gt;, It will filter and run the command on those repositories in which the &lt;value&gt; is present anywhere in repository name. This filter option is not useful when run the command on specific repository and effective on only run the command on organization. i.e. This option is only effective when user calls the command without <code>-o</code> and <code>-r</code> both and when user calls command with <code>-o</code> option only.    </p>
 <p>  flag: <code>-e, --export</code></p>
@@ -290,13 +307,13 @@
 </li>
 <li><p>Scenarios:</p>
 <ul>
-<li><p>If the user calls the command as <code>gia delete-feature-release-branch</code> then it will fetch the organization value from the config file which is the value configured by the configure command. And will list all the feature-release branches that needs to be deleted in the table. Then it will ask for the user permission to delete the branches. If you want to run the command for other organization you are a part of then try <code>-o</code> option.</p>
+<li><p>If the user calls the command as <code>gia delete-stale-branches</code> then it will fetch the organization value from the config file which is the value configured by the configure command. And will list all the stale branches that needs to be deleted in the table. Then it will ask for the user permission to delete the branches. If you want to run the command for other organization you are a part of then try <code>-o</code> option.</p>
 </li>
-<li><p>If the user calls the command as <code>gia delete-feature-release-branch -o &lt;orgval&gt; -r &lt;reponame&gt;</code> then the command will list all the feature-release branches that needs to be deleted in the table for the specified orgval and reponame given by user in command.</p>
+<li><p>If the user calls the command as <code>gia delete-stale-branches -o &lt;orgval&gt; -r &lt;reponame&gt;</code> then the command will list all the stale branches that needs to be deleted in the table for the specified orgval and reponame given by user in command.</p>
 </li>
-<li><p>If the user calls the command as <code>gia delete-feature-release-branch -o &lt;orgval&gt;</code> then the command will execute for all the repositories of the organization specified in orgval by the user in the command in command.</p>
+<li><p>If the user calls the command as <code>gia delete-stale-branches -o &lt;orgval&gt;</code> then the command will execute for all the repositories of the organization specified in orgval by the user in the command in command.</p>
 </li>
-<li><p>If the user calls the command as <code>gia delete-feature-release-branch -r &lt;reponame&gt;</code> then the command will execute for the repository specified in the reponame by the user in the command. And Organization name will be read from config file, so the &lt;reponame&gt; must be the part of the organization which you have configured in the configure command.</p>
+<li><p>If the user calls the command as <code>gia delete-stale-branches -r &lt;reponame&gt;</code> then the command will execute for the repository specified in the reponame by the user in the command. And Organization name will be read from config file, so the &lt;reponame&gt; must be the part of the organization which you have configured in the configure command.</p>
 </li>
 </ul>
 </li>
@@ -313,9 +330,9 @@
 </li>
 <li><p>Options:</p>
 <p>  <code>-o \&lt;value&gt;, --organization=&lt;value&gt;, –organization &lt;value&gt;</code></p>
-<p>  In value you have to specify the value of the organization in which you have to prepare release branches.</p>
+<p>  In value you have to specify the value of the organization in which you have to prepare release branches with PRs.</p>
 <p>  <code>-r \&lt;value&gt;, --repository=&lt;value&gt;, --repository &lt;value&gt;</code></p>
-<p>  In value you have to specify the value of the repository name in which you want to prepare release branches.</p>
+<p>  In value you have to specify the value of the repository name in which you want to prepare release branches with PRs.</p>
 <p>  <code>--filter &lt;value&gt;</code><br>  <strong>Note: This option is required to run this command on organzation or all repositories of user-personal-account. i.e. when run command with -o options or without any options</strong></p>
 <p>  To filter the repositories by &lt;value&gt;, It will filter and run the command on those repositories in which the &lt;value&gt; is present anywhere in repository name. This filter option is not useful when run the command on specific repository and effective on only run the command on organization. i.e. This option is only effective when user calls the command without <code>-o</code> and <code>-r</code> both and when user calls command with <code>-o</code> option only.    </p>
 </li>
@@ -346,9 +363,9 @@
 </li>
 <li><p>Options:</p>
 <p>  <code>-o \&lt;value&gt;, --organization=&lt;value&gt;, –organization &lt;value&gt;</code></p>
-<p>  In value you have to specify the value of the organization in which you have to delete feature-release branches.</p>
+<p>  In value you have to specify the value of the organization in which you have to create PR from release to production.</p>
 <p>  <code>-r \&lt;value&gt;, --repository=&lt;value&gt;, --repository &lt;value&gt;</code></p>
-<p>  In value you have to specify the value of the repository name in which you want to delete feature-release branches.</p>
+<p>  In value you have to specify the value of the repository name in which you want to create PR from release to production.</p>
 <p>  <code>--filter &lt;value&gt;</code><br>  <strong>Note: This option is required to run this command on organzation or all repositories of user-personal-account. i.e. when run command with -o options or without any options</strong></p>
 <p>  To filter the repositories by &lt;value&gt;, It will filter and run the command on those repositories in which the &lt;value&gt; is present anywhere in repository name. This filter option is not useful when run the command on specific repository and effective on only run the command on organization. i.e. This option is only effective when user calls the command without <code>-o</code> and <code>-r</code> both and when user calls command with <code>-o</code> option only.      </p>
 </li>
@@ -373,7 +390,7 @@
 <h2 id="8-gia-clear-cache"><a href="#8-gia-clear-cache" class="headerlink" title="8. gia clear-cache:"></a>8. gia clear-cache:</h2><ul>
 <li>The command is designed to clear the app cache.</li>
 <li>If user run command as <code>gia clear-cache</code> then it will clear all the cache from the database. i.e. truncate the cache table from the database.</li>
-<li>Options:<br>  <code>-h, --help</code><br>  It is the option to see the help of the <code>gia clear-cache</code> command. Run</li>
+<li>Options:<br>  <code>-h, --help</code><br>  It is the option to see the help of the <code>gia clear-cache</code> command.</li>
 </ul>
 <hr>
 
